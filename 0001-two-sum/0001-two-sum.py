@@ -1,21 +1,17 @@
-class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-         # list to store the output
-        output = []
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+       # Create a dictionary to store the elements and their indices
+        num_indices = {}
 
-        # Iterate through the list
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    # Add the indices of the two elements to the output list
-                    output.append(i)
-                    output.append(j)
-                    return output  # Return the output as soon as a valid pair is found
+        # Traverse the array
+        for i, num in enumerate(nums):
+            # Calculate the complement needed to reach the target
+            complement = target - num
+            # If the complement exists in the dictionary, return the indices
+            if complement in num_indices:
+                return [num_indices[complement], i]
+            # Otherwise, add the current number and its index to the dictionary
+            num_indices[num] = i
 
-        # empty list, when no output is found
-        return output
+        # If no solution is found
+        return None
