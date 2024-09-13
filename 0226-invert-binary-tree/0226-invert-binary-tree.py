@@ -6,19 +6,24 @@
 #         self.right = right
 class Solution(object):
     def invertTree(self, root):
-        def reverseNodes(child):
-            if child == None:
-                return;
-             # Recursively invert left and right subtrees
-            reverseNodes(child.left)
-            reverseNodes(child.right)
-            # Swap the left and right children
-            hold = child.left
-            child.left = child.right
-            child.right = hold
-        # Starting the recursive inversion from the root
-        reverseNodes(root)
-        return(root);
-            
-            
+        if root is None:
+            return None
+
+        # Initialize a stack with the root node
+        st = [root]
         
+        # Iterate until the stack is empty
+        while st:
+            node = st.pop()
+            
+            if node:
+                # Swap the left and right children
+                hold = node.left
+                node.left = node.right
+                node.right = hold
+                
+                # Add children to the stack for further processing
+                st.append(node.left)
+                st.append(node.right)
+        
+        return root
