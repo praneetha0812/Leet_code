@@ -9,9 +9,9 @@ class Solution {
         for(int i=0; i<temp.size(); i++){
             nums[i] = temp.get(i);
         }
-        for(int i= temp.size(); i< nums.length; i++){
+        /*for(int i= temp.size(); i< nums.length; i++){
             nums[i]= val;
-        }
+        }*/
         return temp.size();
     }
 }
